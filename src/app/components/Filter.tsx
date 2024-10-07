@@ -7,7 +7,6 @@ const Filter = () => {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
 
-  // Function to handle filter and sorting changes
   const handleFilterChange = (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
   ) => {
@@ -20,9 +19,9 @@ const Filter = () => {
   return (
     <div className="mt-12 flex justify-between">
       <div className="flex gap-6 flex-wrap">
-        {/* Product type filter */}
         <select
           name="type"
+          id=""
           className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
           onChange={handleFilterChange}
         >
@@ -30,8 +29,6 @@ const Filter = () => {
           <option value="physical">Physical</option>
           <option value="digital">Digital</option>
         </select>
-
-        {/* Min price filter */}
         <input
           type="text"
           name="min"
@@ -39,8 +36,6 @@ const Filter = () => {
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
           onChange={handleFilterChange}
         />
-
-        {/* Max price filter */}
         <input
           type="text"
           name="max"
@@ -48,7 +43,6 @@ const Filter = () => {
           className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
           onChange={handleFilterChange}
         />
-
         {/* TODO: Filter Categories */}
         <select
           name="cat"
@@ -56,17 +50,21 @@ const Filter = () => {
           onChange={handleFilterChange}
         >
           <option>Category</option>
-          <option value="new">New Arrival</option>
-          <option value="popular">Popular</option>
-          <option value="sale">On Sale</option>
-          <option value="clearance">Clearance</option>
+          <option value="">New Arrival</option>
+          <option value="">Popular</option>
+        </select>
+        <select
+          name=""
+          id=""
+          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
+        >
+          <option>All Filters</option>
         </select>
       </div>
-
-      {/* Sort by section */}
-      <div>
+      <div className="">
         <select
           name="sort"
+          id=""
           className="py-2 px-4 rounded-2xl text-xs font-medium bg-white ring-1 ring-gray-400"
           onChange={handleFilterChange}
         >

@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { WixClientContext } from "../context/wixContext";
 
 export const useWixClient = () => {
-return useContext(WixClientContext);
+  return  useContext(WixClientContext);
 };

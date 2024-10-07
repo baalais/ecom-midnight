@@ -28,12 +28,12 @@ const ProductList = async ({
     )
     .gt("priceData.price", searchParams?.min || 0)
     .lt("priceData.price", searchParams?.max || 999999)
-  //   .limit(limit || PRODUCT_PER_PAGE)
-  //   .skip(
-  //     searchParams?.page
-  //       ? parseInt(searchParams.page) * (limit || PRODUCT_PER_PAGE)
-  //       : 0
-  //   );
+    .limit(limit || PRODUCT_PER_PAGE)
+    .skip(
+      searchParams?.page
+        ? parseInt(searchParams.page) * (limit || PRODUCT_PER_PAGE)
+        : 0
+    );
   // .find();
 
   if (searchParams?.sort) {
@@ -77,7 +77,7 @@ const ProductList = async ({
           </div>
           <div className="flex justify-between">
             <span className="font-medium">{product.name}</span>
-            <span className="font-semibold">${product.price?.price}</span>
+            <span className="font-semibold">€{product.price?.price}</span>
           </div>
           {product.additionalInfoSections && (
             <div
