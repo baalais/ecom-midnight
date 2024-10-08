@@ -1,19 +1,21 @@
 import { createClient, OAuthStrategy } from "@wix/sdk";
 import { products, collections } from "@wix/stores";
 import { cookies } from "next/headers";
+import {orders} from "@wix/ecom"
 
 export const wixClientServer = async () => {
   let refreshToken;
 
   try {
     const cookieStore = cookies();
-    refreshToken = JSON.parse(cookieStore.get("refeshToken")?.value || "{}");
+    refreshToken = JSON.parse(cookieStore.get("refreshToken")?.value || "{}");
   } catch (e) {}
 
   const wixClient = createClient({
     modules: {
       products,
       collections,
+      orders
       //currentCart
     },
     auth: OAuthStrategy({
