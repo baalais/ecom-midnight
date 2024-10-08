@@ -1,7 +1,8 @@
-import { createClient, OAuthStrategy } from "@wix/sdk";
-import { products, collections } from "@wix/stores";
+import { OAuthStrategy, createClient } from "@wix/sdk";
+import { collections, products } from "@wix/stores";
+import { orders } from "@wix/ecom";
 import { cookies } from "next/headers";
-import {orders} from "@wix/ecom"
+import { members } from '@wix/members';
 
 export const wixClientServer = async () => {
   let refreshToken;
@@ -15,8 +16,8 @@ export const wixClientServer = async () => {
     modules: {
       products,
       collections,
-      orders
-      //currentCart
+      orders,
+      members,
     },
     auth: OAuthStrategy({
       clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID!,
@@ -26,5 +27,6 @@ export const wixClientServer = async () => {
       },
     }),
   });
+
   return wixClient;
 };
